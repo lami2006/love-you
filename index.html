@@ -8,14 +8,14 @@
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
 
         body {
-            background-color: #ffdde1; /* خلفية وردية */
+            background-color: #ffdde1;
             font-family: 'Cairo', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
-            overflow: hidden; /* لمنع ظهور أشرطة التمرير */
+            overflow: hidden;
             flex-direction: column;
         }
 
@@ -32,10 +32,11 @@
         }
 
         img {
-            width: 200px;
+            width: 220px; /* كبرت الصورة قليلاً لتكون أوضح */
             height: auto;
             border-radius: 15px;
             margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         .btn {
@@ -57,12 +58,10 @@
             transform: scale(1.1);
         }
 
-        /* تنسيق زر الرفض ليتحرك بحرية */
         #noBtn {
             position: relative; 
         }
 
-        /* تأثيرات القلوب في الخلفية */
         .heart {
             position: absolute;
             color: #ff4081;
@@ -84,17 +83,14 @@
 </head>
 <body>
 
-    <!-- القلوب المتساقطة للخلفية -->
     <div id="hearts-container"></div>
 
     <div class="container">
-        <!-- الصورة المتغيرة -->
-        <img id="kitty-img" src="https://media.tenor.com/B9O0w8T8tQ0AAAAi/hello-kitty-wave.gif" alt="Hello Kitty">
+        <!-- رابط جديد لصورة التلويح -->
+        <img id="kitty-img" src="https://i.pinimg.com/originals/2a/36/53/2a365311029c4266c2436d227f673105.gif" alt="Hello Kitty Waving">
         
-        <!-- النص المتغير -->
         <h1 id="main-text">مرحبا يا أميرتي</h1>
         
-        <!-- الأزرار -->
         <div id="buttons-area">
             <button class="btn" id="startBtn" onclick="nextPhase()">مرحبا</button>
             
@@ -104,7 +100,6 @@
     </div>
 
     <script>
-        // دالة لإنشاء قلوب في الخلفية
         function createHearts() {
             const container = document.getElementById('hearts-container');
             setInterval(() => {
@@ -120,7 +115,6 @@
         }
         createHearts();
 
-        // المرحلة الثانية: عند الضغط على "مرحبا"
         function nextPhase() {
             const img = document.getElementById('kitty-img');
             const text = document.getElementById('main-text');
@@ -128,19 +122,16 @@
             const yesBtn = document.getElementById('yesBtn');
             const noBtn = document.getElementById('noBtn');
 
-            // تغيير الصورة لوضعية خجولة أو ممسكة بقلب
-            img.src = "https://media.tenor.com/b2H5y001HnEAAAAi/hello-kitty-love.gif"; 
+            // رابط جديد لصورة الخجل/الحب
+            img.src = "https://i.gifer.com/7Z7.gif"; 
             
-            // تغيير النص
             text.innerHTML = "هل تودين أن تكوني يوم عيد الحب الخاص بي يا نور؟";
 
-            // إخفاء زر البداية وإظهار زري نعم ولا
             startBtn.classList.add('hidden');
             yesBtn.classList.remove('hidden');
             noBtn.classList.remove('hidden');
         }
 
-        // تحريك زر "لا" عند محاولة الضغط عليه
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
             const x = Math.random() * (window.innerWidth - 100);
@@ -151,22 +142,18 @@
             noBtn.style.top = `${y}px`;
         }
 
-        // المرحلة الأخيرة: عند الضغط على "نعم"
         function acceptLove() {
             const img = document.getElementById('kitty-img');
             const text = document.getElementById('main-text');
             const buttonsArea = document.getElementById('buttons-area');
 
-            // تغيير الصورة لوضعية سعيدة جداً أو قبلات
-            img.src = "https://media.tenor.com/l5_u4JytRjqAAAAi/hello-kitty-kiss.gif";
+            // رابط جديد لصورة القبلات/السعادة
+            img.src = "https://i.gifer.com/1kx.gif";
             
-            // رسالة الحب الرومانسية
             text.innerHTML = "أحبك يا نور! ❤️<br>أنتِ أجمل شيء في حياتي";
             
-            // إخفاء الأزرار
             buttonsArea.innerHTML = "";
 
-            // تكثيف القلوب في الخلفية
             setInterval(() => {
                 const heart = document.createElement('div');
                 heart.classList.add('heart');
